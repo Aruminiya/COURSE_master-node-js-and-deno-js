@@ -1,5 +1,5 @@
 const express = require('express');
-
+const path = require('path');
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
@@ -26,8 +26,8 @@ app.use((req, res, next) => {
 // 404 page
 app.use((req, res, next) => {
   res.status(404);
-  res.send('<h1>Page not found</h1>');
-  next();
+  const page404 = path.join(__dirname, 'views', '404.html');
+  res.sendFile(page404);
 });
 
 app.listen(3000);
