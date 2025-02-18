@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false})) // `body-parser` 是一個用於解析 HTTP 請求主體的中介軟體
 
 app.use(shopRoutes);
-app.use(adminRoutes);
+app.use('/admin', adminRoutes); // '過濾路徑 /admin' 代表 ‘/admin’ 為開頭的路徑 , 如果沒有填寫 代表以 '/' 為開頭的路徑
 
 // '/' 代表 ‘/’ 為開頭的路徑
 app.use('/', (req, res, next) => {
